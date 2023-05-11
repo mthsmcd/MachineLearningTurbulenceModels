@@ -9,7 +9,7 @@ or other high-fidelity simulations'data (e.g. LES).
 Models' source terms:
 - **RStress** - Reynolds Stress Tensor ***R***
   - Directly injects the deviatoric part of ***R*** into the momentum balance
-- **nutRStress** - Perpendicular-to S Reynolds Stress ***Rperp*** and optimal turbulent viscosity ***nut***
+- **nutRStress** - Perpendicular-to S (mean strain-rate tensor) Reynolds Stress ***Rperp*** and optimal turbulent viscosity ***nut***
   - Based on the papers by Wu et al. (2018) and Brener et al. (2021), referenced at the end of this file.
   - Directly injects the deviatoric part of ***Rperp*** into the momentum balance, along with the turbulent viscosity nut.
   - The turbulent viscosity ***nut*** can be included in the diffusive term of the momentum equation implicitly, as proposed by Wu et al. (2018), or explicitly, as in Brener et al. (2021)
