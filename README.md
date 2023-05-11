@@ -32,7 +32,7 @@ To include the library in your OF installation use the command:
 2) Go to the directory where you copied the repository's content
 3) Use the command `wmake libso`
 4) To use the models it's necessary to include the line below into your simulation's controlDict:
-  `libs ("libmyMachineLearningRASModels");`
+  `libs ("libmyMachineLearningRASModels.so");`
 5) Change the turbulence model in `constant/turbulenceProperties` into one of the 4 models of this library.
   
 # References
