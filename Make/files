@@ -1,0 +1,9 @@
+incompressibleTurbulenceModel.C
+
+RStress/RStress.C
+nutRStress/nutRStress.C
+
+tForce/tForce.C
+nutTForce/nutTForce.C
+
+LIB = $(FOAM_USER_LIBBIN)/libmyMachineLearningRASModels
