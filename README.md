@@ -1,7 +1,8 @@
 # MachineLearningTurbulenceModels
 OpenFOAM's Turbulence Models to be used with Machine Learning predictions.
 
-These models were developed and tested in OpenFOAM-4.x and OpenFOAM-7
+These models were developed and tested in OpenFOAM-4.x, OpenFOAM-7 and OpenFOAM-2306.
+*(Prefer the ESI versions (openfoam.com) since the foundation versions (openfoam.org) have renamed and moved header files used to compile this library since OpenFOAM-7 and compilation won't succeed, unless the code is adapted)*
 
 Models are used to correct RANS turbulent flows by using Machine Learning predicted quantities or direct injection of DNS
 or other high-fidelity simulations'data (e.g. LES).
