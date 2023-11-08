@@ -1,3 +1,4 @@
-lnInclude/*
-Make/linux*
+of-turbulence-models/lnInclude/*
+of-turbulence-models/Make/linux*
 .vscode/*
+*.sh

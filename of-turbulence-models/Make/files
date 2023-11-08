@@ -1,0 +1,9 @@
+incompressibleTurbulenceModel.C
+
+RST/RST.C
+evRST/evRST.C
+
+RFV/RFV.C
+evRFV/evRFV.C
+
+LIB = $(FOAM_USER_LIBBIN)/libMachineLearningTurbulenceModels
