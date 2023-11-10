@@ -35,7 +35,6 @@ Each subdirectory in the SD or PH folders contains the subdirectory `0` with the
 - *Rrans* - Reynolds stress
 - *p* - pressure
 - *S* - mean strain-rate tensor
-- *Q_S* - eigenvectors of the mean strain-rate tensor S
 - *k* - turbulent kinetic energy
 - *epsilon* - turbulent dissipation
 - *nut* - eddy-viscosity
