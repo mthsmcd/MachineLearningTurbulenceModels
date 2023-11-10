@@ -1,16 +1,16 @@
 # MachineLearningTurbulenceModels
-OpenFOAM's Turbulence Models to be used with Machine Learning predictions.
+OpenFOAM's (OF) Turbulence Models to be used with Machine Learning predictions.
 
 **These are the models used in our paper *"A highly–accurate strategy for data-driven turbulence modelling"* by Bernardo P. Brener, Matheus A. Cruz, Matheus S. S. Macedo and Roney L. Thompson.** 
 
 A preprint version of the paper can be accessed at http://dx.doi.org/10.2139/ssrn.4073177
 
-These models were implemented and tested in OpenFOAM-4.x, OpenFOAM-7 and OpenFOAM-2306.
-
-*(Prefer the ESI versions (openfoam.com) since the foundation versions (openfoam.org) have renamed and moved header files used to compile this library from version 8 onwards. In these versions, compilation won't succeed, unless the code is adapted)*
-
-They are used to correct RANS simulations by using quantities predicted by Machine Learning techniques or by the direct injection of high-fidelity
+The models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques or by the direct injection of high-fidelity
 fields (e.g. DNS, LES). The corrections are driven by source-terms injected into the mean momentum equation.
+
+Implementation and tests were done in OpenFOAM-4.x, OpenFOAM-7 and OpenFOAM-2306.
+
+*The OpenFOAM foundation versions (openfoam.org) have renamed and moved header files used to compile this library from version 8 onwards. In these versions, compilation won't succeed, unless the code is adapted. For this reason I advise anyone interested in using this library to prefer the ESI versions (openfoam.com)*
 
 ## Folders in the repository
 
@@ -20,7 +20,7 @@ To compile and include the library in your OF installation do the following:
 1) Pull the repository, preferably into your $WM_PROJECT_USER_DIR
 3) Navigate to the repository's directory `of-turbulence-models`
 3) Use the command `wmake libso`
-4) To use the models it's necessary to include the line below into your simulation's controlDict:
+4) It's necessary to include the line below into your simulation's controlDict in order to use the models:
   `libs ("libMachineLearningTurbulenceModels.so");`
 5) Change the turbulence model in `constant/turbulenceProperties` into one of the 4 models of this library.
 
