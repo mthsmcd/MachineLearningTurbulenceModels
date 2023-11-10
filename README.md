@@ -87,6 +87,6 @@ Models were constructed using OF's *ShihQuadraticKE* turbulence model.
 
 - Pinelli, A., Uhlmann, M., Sekimoto, A. and Kawahara, G. "Reynolds number dependence of mean flow structure in square duct turbulence." *Journal of Fluid Mechanics*, 644, 107-122 (2010). https://doi.org/10.1017/S0022112009992242
 
-- Xiao, H., Wu, J.-L., Laizet, S., Duan, L. "Flows over periodic hills of parameterized geometries: A dataset for data-driven turbulence modeling from direct simulations." *Computers and Fluids* 200(104431), 1–26 (2020). https://doi.org/10.1016/j.compfluid.2020.104431
+- Xiao, H., Wu, J.-L., Laizet, S., Duan, L. "Flows over periodic hills of parameterized geometries: A dataset for data-driven turbulence modeling from direct simulations." *Computers and Fluids*, 200(104431), 1–26 (2020). https://doi.org/10.1016/j.compfluid.2020.104431
 
 - Fonseca, E.F., Rangel, V.B., Brener, B.P., Cruz, M. A. and Thompson, R. L. "Pre-processing DNS data to improve statistical convergence and accuracy of mean velocity fields in invariant data-driven turbulence models." *Theoretical and Computational Fluid Dynamics*, 36, 435–463 (2022). https://doi.org/10.1007/s00162-022-00603-4
