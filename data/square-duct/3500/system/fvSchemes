@@ -1,19 +1,19 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  4.x                                   |
-|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|  \\    /   O peration     | Version:  2306                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 FoamFile
 {
-    version     2.0;
-    format      ascii;
-    class       dictionary;
-    location    "system";
-    object      fvSchemes;
+    version         2;
+    format          ascii;
+    class           dictionary;
+    location        "system";
+    object          fvSchemes;
 }
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 ddtSchemes
 {
@@ -27,18 +27,11 @@ gradSchemes
 
 divSchemes
 {
-    default         			Gauss linear;
-    div(phi,U)      			Gauss upwind;
-    div(phi,k)      			Gauss upwind;
-    div(phi,epsilon) 			Gauss upwind;
-    div(phi,omega)  			Gauss upwind;
-    div(phi,r)					Gauss upwind;
-    div(phi,divR)				Gauss upwind;
-    div(phi,t)					Gauss upwind;
-    div(phi,R)      			Gauss upwind;
-    div(dev(R))          		Gauss linear;
-    div(phi,nuTilda) 			Gauss limitedLinear 1;
-    div((nuEff*dev2(T(grad(U))))) 	Gauss linear;
+    default         Gauss linear;
+    div(phi,U)      Gauss upwind;
+    div(phi,k)      Gauss upwind;
+    div(phi,epsilon) Gauss upwind;
+    div((nuEff*dev2(T(grad(U))))) Gauss linear;
 }
 
 laplacianSchemes
@@ -55,11 +48,11 @@ snGradSchemes
 {
     default         corrected;
 }
+
 wallDist
 {
-    method meshWave;
+    method          meshWave;
 }
-
 
 
 // ************************************************************************* //
