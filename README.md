@@ -2,9 +2,11 @@
 OpenFOAM's Turbulence Models to be used with Machine Learning predictions.
 
 **These are the models used in our paper *"A highly–accurate strategy for data-driven turbulence modelling"* by Bernardo P. Brener, Matheus A. Cruz, Matheus S. S. Macedo and Roney L. Thompson.** 
+
 A preprint version of the paper can be accessed at http://dx.doi.org/10.2139/ssrn.4073177
 
 These models were developed and tested in OpenFOAM-4.x, OpenFOAM-7 and OpenFOAM-2306.
+
 *(Prefer the ESI versions (openfoam.com) since the foundation versions (openfoam.org) have renamed and moved header files used to compile this library from version 8 onwards. In these versions, compilation won't succeed, unless the code is adapted)*
 
 Models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques or by the direct injection of high-fidelity
@@ -13,10 +15,10 @@ fields (e.g. DNS, LES). The corrections are driven by source-terms injected into
 ## Folders in the repository
 
 ### The folder `of-turbulence-models` contains the OpeFOAM implementation of the data-driven turbulence models.
+
 To compile and include the library in your OF installation do the following:
 1) Pull the repository, preferably into your $WM_PROJECT_USER_DIR
-2) Go to the directory where you copied the repository's content
-3) Go to the repository's folder `of-turbulence-models`
+3) Navigate to the repository's directory `of-turbulence-models`
 3) Use the command `wmake libso`
 4) To use the models it's necessary to include the line below into your simulation's controlDict:
   `libs ("libMachineLearningTurbulenceModels.so");`
@@ -24,9 +26,11 @@ To compile and include the library in your OF installation do the following:
 
 ### The folder `data` contains OpenFOAM simulations
 
-The square-duct (SD) simulation is provided. 
-The folder contains the simulations for Reynolds numbers of 2200, 2400, 2600, 2900, 3200, 3500, used in our paper.
-Each SD folder contains a subdirectory `0` with the following `k-epsilon` fields:
+The square-duct (SD) and periodic-hills (PH) simulations used in our paper are provided. 
+
+The SD folder contains the simulations for Reynolds numbers of 2200, 2400, 2600, 2900, 3200, 3500.
+The PH folder contains the simulations for the slopes of 0.5, 0.8, 1.0, 1.2, 1.5.
+Each subdirectory in the SD or PH folders contains the subdirectory `0` with the following `k-epsilon` fields:
 - *Urans* - velocity
 - *Rrans* - Reynolds stress
 - *p* - pressure
@@ -36,9 +40,12 @@ Each SD folder contains a subdirectory `0` with the following `k-epsilon` fields
 - *epsilon* - turbulent dissipation
 - *nut* - eddy-viscosity
 
-And the following DNS fields, provided by Pinelli et al. (2010) and post-processed by Fonseca et al. (2022):
+And the following DNS fields:
 - *Udns* - velocity
 - *Rdns* - Reynolds stress
+
+The DNS fields for the square-duct were provided by Pinelli et al. (2010) and post-processed by Fonseca et al. (2022).
+The DNS fields for the periodic-hills were provided by Xiao et al. (2020)
 
 
 ## Models' in the repository and their source terms
@@ -69,15 +76,17 @@ Models were constructed using OF's *ShihQuadraticKE* turbulence model.
 
 - Brener, B. P., Cruz, M. A., Macedo, M. S. S. and Thompson, R. L. "An Invariant and Highly–Accurate Strategy for Data-Driven Turbulence Modelling." *SSRN Electronic Journal* (2022) http://dx.doi.org/10.2139/ssrn.4073177
 
-- Brener, B. P., Cruz, M. A., Thompson, R. L., & Anjos, R. P. "Conditioning and accurate solutions of Reynolds average Navier–Stokes equations with data-driven turbulence closures."   *Journal of Fluid Mechanics*, 915, A110 (2021). https://doi.org/doi:10.1017/jfm.2021.148
+- Brener, B. P., Cruz, M. A., Thompson, R. L. and Anjos, R. P. "Conditioning and accurate solutions of Reynolds average Navier–Stokes equations with data-driven turbulence closures."   *Journal of Fluid Mechanics*, 915, A110 (2021). https://doi.org/doi:10.1017/jfm.2021.148
 
-- Cruz, M. A., Thompson, R. L., Sampaio, L. E., & Bacchi, R. D. "The use of the Reynolds force vector in a physics informed machine learning approach for predictive turbulence modeling." *Computers & Fluids* 192 (2019): 104258. https://doi.org/10.1016/j.compfluid.2019.104258
+- Cruz, M. A., Thompson, R. L., Sampaio, L. E. and Bacchi, R. D. "The use of the Reynolds force vector in a physics informed machine learning approach for predictive turbulence modeling." *Computers & Fluids*, 192 (2019): 104258. https://doi.org/10.1016/j.compfluid.2019.104258
 
-- Wu, J.L., Xiao, H., and Paterson, E. "Physics-informed machine learning approach for augmenting turbulence models: A comprehensive framework." *Physical Review Fluids* 3.7 (2018): 074602. https://doi.org/10.1103/PhysRevFluids.3.074602
+- Wu, J.L., Xiao, H., and Paterson, E. "Physics-informed machine learning approach for augmenting turbulence models: A comprehensive framework." *Physical Review Fluids*, 3.7 (2018): 074602. https://doi.org/10.1103/PhysRevFluids.3.074602
 
 
 **Databases**
 
-- Pinelli, A., Uhlmann, M., Sekimoto, A., & Kawahara, G. "Reynolds number dependence of mean flow structure in square duct turbulence." *Journal of Fluid Mechanics*, 644, 107-122 (2010). https://doi.org/10.1017/S0022112009992242
+- Pinelli, A., Uhlmann, M., Sekimoto, A. and Kawahara, G. "Reynolds number dependence of mean flow structure in square duct turbulence." *Journal of Fluid Mechanics*, 644, 107-122 (2010). https://doi.org/10.1017/S0022112009992242
 
-- Fonseca, E.F., Rangel, V.B., Brener, B.P. et al. "Pre-processing DNS data to improve statistical convergence and accuracy of mean velocity fields in invariant data-driven turbulence models." *Theoretical and Computational Fluid Dynamics*. 36, 435–463 (2022). https://doi.org/10.1007/s00162-022-00603-4
+- Xiao, H., Wu, J.-L., Laizet, S., Duan, L. "Flows over periodic hills of parameterized geometries: A dataset for data-driven turbulence modeling from direct simulations." *Computers and Fluids* 200(104431), 1–26 (2020). https://doi.org/10.1016/j.compfluid.2020.104431
+
+- Fonseca, E.F., Rangel, V.B., Brener, B.P., Cruz, M. A. and Thompson, R. L. "Pre-processing DNS data to improve statistical convergence and accuracy of mean velocity fields in invariant data-driven turbulence models." *Theoretical and Computational Fluid Dynamics*, 36, 435–463 (2022). https://doi.org/10.1007/s00162-022-00603-4

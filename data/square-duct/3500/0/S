@@ -5,18 +5,18 @@
 |   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 FoamFile
 {
-    version     2.0;
-    format      ascii;
-    arch        "LSB;label=32;scalar=64";
-    class       volSymmTensorField;
-    location    "0";
-    object      D;
+    version         2;
+    format          ascii;
+    arch            "LSB;label=32;scalar=64";
+    class           volSymmTensorField;
+    location        "0";
+    object          S;
 }
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 -1 0 0 0 0];
+dimensions      [ 0 0 -1 0 0 0 0 ];
 
 internalField   nonuniform List<symmTensor> 
 15625
