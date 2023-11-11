@@ -2,3 +2,7 @@ of-turbulence-models/lnInclude/*
 of-turbulence-models/Make/linux*
 .vscode/*
 *.sh
+.idea/*
+CMakeLists.txt
+cmake*
+of-applications/*
