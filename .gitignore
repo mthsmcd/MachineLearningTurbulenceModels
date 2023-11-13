@@ -1,8 +1,9 @@
-of-turbulence-models/lnInclude/*
-of-turbulence-models/Make/linux*
 .vscode/*
-*.sh
 .idea/*
+calc_d.sh
+org.sh
 CMakeLists.txt
 cmake*
-of-applications/*
+
+lnInclude*
+linux*
