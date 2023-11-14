@@ -18,16 +18,16 @@ Implementation and tests were done in OpenFOAM-4.x, OpenFOAM-7 and OpenFOAM-2306
 
 To compile and include the library in your OF installation do the following:
 1) Pull the repository, preferably into your $WM_PROJECT_USER_DIR
-3) Navigate to the repository's directory `of-turbulence-models`
+2) Navigate to the repository's directory `of-turbulence-models`
 3) Use the command `wmake libso`
-4) It's necessary to include the line below into your simulation's controlDict in order to use the models:
-  `libs ("libMachineLearningTurbulenceModels.so");`
+4) It's necessary to include the line
+   `libs ("libMachineLearningTurbulenceModels.so");` into your simulation's controlDict in order to use the models
 5) Change the turbulence model in `constant/turbulenceProperties` into one of the 4 models of this library.
 
 ### The folder `of-applications` contains the applications that calculate the source-terms of each model
 
-To compile the models, navigate to the application's directory and use the command `wmake`.
-A shell script that compiles all of the models is provided.
+To compile the applications, navigate to their directories and use the command `wmake`.
+A shell script that compiles all of them is provided.
 
 ### The folder `data` contains OpenFOAM simulations
 
@@ -49,6 +49,7 @@ And the following DNS fields:
 - *Rdns* - Reynolds stress
 
 The DNS fields for the square-duct were provided by Pinelli et al. (2010) and post-processed by Fonseca et al. (2022).
+
 The DNS fields for the periodic-hills were provided by Xiao et al. (2020)
 
 ## Models' in the repository and their source terms
