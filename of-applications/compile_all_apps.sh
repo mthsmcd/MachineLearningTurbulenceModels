@@ -11,3 +11,4 @@ do
   echo -e "Finished compiling $dir \n\n"
 
 done
+

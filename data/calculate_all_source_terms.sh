@@ -57,3 +57,4 @@ do
   rm -rv ./periodic-hills/"$dir"/0/R
 
 done
+
