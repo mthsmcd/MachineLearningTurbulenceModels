@@ -1,12 +1,16 @@
 # MachineLearningTurbulenceModels
 OpenFOAM's (OF) Turbulence Models to be used with Machine Learning predictions.
 
-**These are the models used in our paper *"A highly–accurate strategy for data-driven turbulence modelling"* by Bernardo P. Brener, Matheus A. Cruz, Matheus S. S. Macedo and Roney L. Thompson.** 
+**These are the models used in our paper *"A highly accurate strategy for data-driven turbulence modeling"* by Bernardo P. Brener, Matheus A. Cruz, Matheus S. S. Macedo and Roney L. Thompson., published at *Computational and Applied Mathematics*** 
 
-A preprint version of the paper can be accessed at http://dx.doi.org/10.2139/ssrn.4073177
+The paper can be accessed at https://doi.org/10.1007/s40314-023-02547-9, you can find information on how to cite it following this link.
+It is fully available for free at https://rdcu.be/dwtcd
 
-The models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques or by the direct injection of high-fidelity
-fields (e.g. DNS, LES). The corrections are driven by source-terms injected into the mean momentum equation.
+(It was previously cited by other works in its *preprint* version, which is still accessible at http://dx.doi.org/10.2139/ssrn.4073177)
+
+**The models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques or by the direct injection of high-fidelity fields (e.g. DNS, LES).**
+
+The corrections are driven by source-terms injected into the mean momentum equation.
 
 Implementation and tests were done in OpenFOAM-4.x, OpenFOAM-7 and OpenFOAM-2306.
 
@@ -80,9 +84,9 @@ Inside the `data` folder there is a shell script that will calculate and organiz
 
 **Models**
 
-- Brener, B. P., Cruz, M. A., Macedo, M. S. S. and Thompson, R. L. "An Invariant and Highly–Accurate Strategy for Data-Driven Turbulence Modelling." *SSRN Electronic Journal* (2022) http://dx.doi.org/10.2139/ssrn.4073177
+- Brener, B. P., Cruz, M. A., Macedo, M. S. S. and Thompson, R. L. "A highly accurate strategy for data-driven turbulence modeling." *Computational and Applied Mathematics*, 43, 59 (2024). https://doi.org/10.1007/s40314-023-02547-9
 
-- Brener, B. P., Cruz, M. A., Thompson, R. L. and Anjos, R. P. "Conditioning and accurate solutions of Reynolds average Navier–Stokes equations with data-driven turbulence closures."   *Journal of Fluid Mechanics*, 915, A110 (2021). https://doi.org/doi:10.1017/jfm.2021.148
+- Brener, B. P., Cruz, M. A., Thompson, R. L. and Anjos, R. P. "Conditioning and accurate solutions of Reynolds average Navier–Stokes equations with data-driven turbulence closures." *Journal of Fluid Mechanics*, 915, A110 (2021). https://doi.org/doi:10.1017/jfm.2021.148
 
 - Cruz, M. A., Thompson, R. L., Sampaio, L. E. and Bacchi, R. D. "The use of the Reynolds force vector in a physics informed machine learning approach for predictive turbulence modeling." *Computers & Fluids*, 192 (2019): 104258. https://doi.org/10.1016/j.compfluid.2019.104258
 
