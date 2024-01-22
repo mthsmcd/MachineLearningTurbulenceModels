@@ -1,7 +1,7 @@
 # MachineLearningTurbulenceModels
 OpenFOAM's (OF) Turbulence Models to be used with Machine Learning predictions.
 
-**These are the models used in our paper *"A highly accurate strategy for data-driven turbulence modeling"* by Bernardo P. Brener, Matheus A. Cruz, Matheus S. S. Macedo and Roney L. Thompson., published at *Computational and Applied Mathematics*** 
+**These are the models used in our paper *"A highly accurate strategy for data-driven turbulence modeling"* by Bernardo P. Brener, Matheus A. Cruz, Matheus S. S. Macedo and Roney L. Thompson., published at *Computational and Applied Mathematics* in January 2024** 
 
 The paper can be accessed at https://doi.org/10.1007/s40314-023-02547-9, you can find information on how to cite it following this link.
 It is fully available for free at https://rdcu.be/dwtcd
