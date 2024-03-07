@@ -96,7 +96,7 @@ Inside the `data` folder there is a shell script that will calculate and organiz
 
 **Models**
 
-- Macedo, M. S. S., Cruz, M. A., Brener, B. P. and Thompson, R. L. "A data-driven turbulence modeling for the Reynolds stress tensor transport equation" *Acce´ted for publishing* (2024)
+- Macedo, M. S. S., Cruz, M. A., Brener, B. P. and Thompson, R. L. "A data-driven turbulence modeling for the Reynolds stress tensor transport equation" *Accepted for publishing* (2024)
 
 - Brener, B. P., Cruz, M. A., Macedo, M. S. S. and Thompson, R. L. "A highly accurate strategy for data-driven turbulence modeling." *Computational and Applied Mathematics*, 43, 59 (2024). https://doi.org/10.1007/s40314-023-02547-9
 
