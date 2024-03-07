@@ -16,7 +16,7 @@ Not yet available online. We will update this repository as soon as it is.
 
 **The models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques or by the direct injection of high-fidelity fields (e.g. DNS, LES).**
 
-The corrections are driven by source-terms injected into the mean momentum equation or into a Reynolds stress model (RSM).
+In the models of paper 1), the corrections are driven by source-terms injected into the mean momentum equation, while the model of paper 2) injects a source term into a Reynolds stress model (RSM).
 
 Implementation and tests were done in OpenFOAM-4.x, OpenFOAM-7 and OpenFOAM-2306.
 
