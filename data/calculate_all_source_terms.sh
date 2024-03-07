@@ -2,13 +2,17 @@
 
 sd_dirs="2200 2400 2600 2900 3200 3500"
 ph_dirs="0p5 0p8 1p0 1p2 1p5"
-fields="nut t tStar Rperp"
+sd_fields="nut t tStar Rperp Gamma"
+ph_fields="nut t tStar Rperp"
 
 for dir in ${sd_dirs};
 do
 
   cp -rv ./square-duct/"$dir"/0/Udns ./square-duct/"$dir"/0/U
   cp -rv ./square-duct/"$dir"/0/Rdns ./square-duct/"$dir"/0/R
+
+  calculateGamma -case ./square-duct/"$dir"
+
   mv -v ./square-duct/"$dir"/0/nut ./square-duct/"$dir"/0/nutRans
 
   calculateNut -case ./square-duct/"$dir"
@@ -19,7 +23,7 @@ do
 
   calculateRperp -case ./square-duct/"$dir"
 
-  for f in ${fields};
+  for f in ${sd_fields};
   do
 
     mv -v ./square-duct/"$dir"/0/"$f" ./square-duct/"$dir"/0/"${f}"Dns
@@ -46,7 +50,7 @@ do
 
   calculateRperp -case ./periodic-hills/"$dir"
 
-  for f in ${fields};
+  for f in ${ph_fields};
   do
 
     mv -v ./periodic-hills/"$dir"/0/"$f" ./periodic-hills/"$dir"/0/"${f}"Dns

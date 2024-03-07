@@ -1,16 +1,18 @@
 # MachineLearningTurbulenceModels
 OpenFOAM's (OF) Turbulence Models to be used with Machine Learning predictions.
 
-**These are the models used in our paper *"A highly accurate strategy for data-driven turbulence modeling"* by Bernardo P. Brener, Matheus A. Cruz, Matheus S. S. Macedo and Roney L. Thompson., published at *Computational and Applied Mathematics* in January 2024** 
+**These are the models used in our papers *"A highly accurate strategy for data-driven turbulence modeling"* by Bernardo P. Brener, Matheus A. Cruz, Matheus S. S. Macedo and Roney L. Thompson., published at *Computational and Applied Mathematics* in January 2024 and *"A data-driven turbulence modeling for the Reynolds stress tensor transport equation"* by Matheus S. S. Macedo, Matheus A. Cruz, Bernardo P. Brener and Roney L. Thompson, accepted for publishing in March 2024**
 
-The paper can be accessed at https://doi.org/10.1007/s40314-023-02547-9, you can find information on how to cite it following this link.
+The first paper can be accessed at https://doi.org/10.1007/s40314-023-02547-9, you can find information on how to cite it following this link.
 It is fully available for free at https://rdcu.be/dwtcd
 
 (It was previously cited by other works in its *preprint* version, which is still accessible at http://dx.doi.org/10.2139/ssrn.4073177)
 
+The second paper has been accepted for publishing but is not yet available online. We will update this repository as soon as it is.
+
 **The models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques or by the direct injection of high-fidelity fields (e.g. DNS, LES).**
 
-The corrections are driven by source-terms injected into the mean momentum equation.
+The corrections are driven by source-terms injected into the mean momentum equation or into a Reynolds stress model (RSM).
 
 Implementation and tests were done in OpenFOAM-4.x, OpenFOAM-7 and OpenFOAM-2306.
 
@@ -69,11 +71,17 @@ The DNS fields for the periodic-hills were provided by Xiao et al. (2020)
   - Based on the work by Cruz et al. (2019), referenced at the end of this file.
   - Directly injects the vector ***t*** into the momentum balance
 - **evRFV** - nonlinear part of the modified Reynolds force vector ***tStar*** and an optimal eddy-viscosity ***nut***
-  - Based on the papers Brener et al. (2021) and Brener et al (2022), referenced at the end of this file.
+  - Based on the papers by Brener et al. (2021) and Brener et al (2022), referenced at the end of this file.
   - Directly injects the vector ***tStar*** into the momentum balance along with the eddy-viscosity nut.
   - The scalar ***nut*** is included within the diffusive term of the discretized mean momentum balance solved to compute the velocity field U
   - Analogous to the `RST-EV` model, a constant ***implicitFactor*** defines if the diffusive term containing ***nut*** is calculated implicitly or explicitly.
   - Default value is also `1.0` (implicit)
+- **gammaRST** - Symmetric source term tensor ***Gamma***
+  - Based on the paper by Macedo et al. (2024), referenced at the end of this file.
+  - Injects the source term ***Gamma*** into the data-driven Reynolds stress model.
+  - At each iteration, the RST equation is solved for ***R***.
+  - The deviatoric part of the calculated ***R*** is injected into the momentum balance. 
+  - The process is repeated iteratively until numerical convergence.
 
 Models were constructed using OF's *ShihQuadraticKE* turbulence model.
 
@@ -83,6 +91,8 @@ Inside the `data` folder there is a shell script that will calculate and organiz
 ## References
 
 **Models**
+
+- Macedo, M. S. S., Cruz, M. A., Brener, B. P. and Thompson, R. L. "A data-driven turbulence modeling for the Reynolds stress tensor transport equation" *Acce´ted for publishing* (2024)
 
 - Brener, B. P., Cruz, M. A., Macedo, M. S. S. and Thompson, R. L. "A highly accurate strategy for data-driven turbulence modeling." *Computational and Applied Mathematics*, 43, 59 (2024). https://doi.org/10.1007/s40314-023-02547-9
 

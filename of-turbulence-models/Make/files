@@ -1,5 +1,7 @@
 incompressibleTurbulenceModel.C
 
+gammaRST/gammaRST.C
+
 RST/RST.C
 evRST/evRST.C
 

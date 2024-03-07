@@ -1,6 +1,6 @@
 #!/bin/bash
 
-directories="calculateNut calculateRFV calculateRFVperp calculateRperp"
+directories="calculateNut calculateRFV calculateRFVperp calculateRperp calculateGamma"
 
 for dir in ${directories};
 do
