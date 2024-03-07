@@ -1,14 +1,18 @@
 # MachineLearningTurbulenceModels
 OpenFOAM's (OF) Turbulence Models to be used with Machine Learning predictions.
 
-**These are the models used in our papers *"A highly accurate strategy for data-driven turbulence modeling"* by Bernardo P. Brener, Matheus A. Cruz, Matheus S. S. Macedo and Roney L. Thompson., published at *Computational and Applied Mathematics* in January 2024 and *"A data-driven turbulence modeling for the Reynolds stress tensor transport equation"* by Matheus S. S. Macedo, Matheus A. Cruz, Bernardo P. Brener and Roney L. Thompson, accepted for publishing in March 2024**
+**These are the models used in our papers:**
 
-The first paper can be accessed at https://doi.org/10.1007/s40314-023-02547-9, you can find information on how to cite it following this link.
+1) ***"A highly accurate strategy for data-driven turbulence modeling"* by Bernardo P. Brener, Matheus A. Cruz, Matheus S. S. Macedo and Roney L. Thompson., published at *Computational and Applied Mathematics* in January 2024** 
+
+Available at https://doi.org/10.1007/s40314-023-02547-9, you can find information on how to cite it following this link.
 It is fully available for free at https://rdcu.be/dwtcd
 
 (It was previously cited by other works in its *preprint* version, which is still accessible at http://dx.doi.org/10.2139/ssrn.4073177)
 
-The second paper has been accepted for publishing but is not yet available online. We will update this repository as soon as it is.
+2) ***"A data-driven turbulence modeling for the Reynolds stress tensor transport equation"* by Matheus S. S. Macedo, Matheus A. Cruz, Bernardo P. Brener and Roney L. Thompson, accepted for publishing in March 2024**
+
+Which has been accepted for publishing but is not yet available online. We will update this repository as soon as it is.
 
 **The models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques or by the direct injection of high-fidelity fields (e.g. DNS, LES).**
 
