@@ -12,7 +12,7 @@ It is fully available for free at https://rdcu.be/dwtcd
 
 2) ***"A data-driven turbulence modeling for the Reynolds stress tensor transport equation"* by Matheus S. S. Macedo, Matheus A. Cruz, Bernardo P. Brener and Roney L. Thompson, accepted for publishing in March 2024**
 
-Which has been accepted for publishing but is not yet available online. We will update this repository as soon as it is.
+Not yet available online. We will update this repository as soon as it is.
 
 **The models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques or by the direct injection of high-fidelity fields (e.g. DNS, LES).**
 
