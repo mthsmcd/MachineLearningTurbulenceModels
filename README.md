@@ -6,6 +6,7 @@ OpenFOAM's (OF) Turbulence Models to be used with Machine Learning predictions.
 1) ***"A highly accurate strategy for data-driven turbulence modeling"* by Bernardo P. Brener, Matheus A. Cruz, Matheus S. S. Macedo and Roney L. Thompson., published at *Computational and Applied Mathematics* in January 2024** 
 
 Available at https://doi.org/10.1007/s40314-023-02547-9
+
 It is fully available for free at https://rdcu.be/dwtcd
 
 (It was previously cited by other works in its *preprint* version, which is still accessible at http://dx.doi.org/10.2139/ssrn.4073177)
@@ -13,6 +14,7 @@ It is fully available for free at https://rdcu.be/dwtcd
 2) ***"A data-driven turbulence modeling for the Reynolds stress tensor transport equation"* by Matheus S. S. Macedo, Matheus A. Cruz, Bernardo P. Brener and Roney L. Thompson, published at the *International Journal for Numerical Methods in Fluids* in March 2024**
 
 Available at https://doi.org/10.1002/fld.5284
+
 Fully available for free at https://onlinelibrary.wiley.com/share/author/JQGYVIFEU2NRDDMCZRJZ?target=10.1002/fld.5284
 
 Information on how to cite both papers are available on their respective links.
