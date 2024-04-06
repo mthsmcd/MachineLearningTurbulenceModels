@@ -1,0 +1,14 @@
+#!/bin/sh
+
+cd "${0%/*}" || exit
+
+app_directories="calculateNut calculateRFV calculateRFVperp calculateRperp calculateGamma"
+
+for dir in ${app_directories};
+do
+
+  wclean ./of-applications/$dir
+
+done
+
+wclean ./of-turbulence-models

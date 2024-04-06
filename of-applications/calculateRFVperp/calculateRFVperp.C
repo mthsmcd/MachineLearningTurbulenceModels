@@ -56,10 +56,7 @@ int main(int argc, char *argv[])
     );
 
     Info<< "Reading kinematic viscosity nu\n" << endl;
-    dimensionedScalar nu
-    (
-        transportProperties.lookup("nu")
-    );
+    dimensionedScalar nu ("nu", transportProperties);
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

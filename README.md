@@ -1,5 +1,5 @@
 # MachineLearningTurbulenceModels
-OpenFOAM's (OF) Turbulence Models to be used with Machine Learning predictions.
+OpenFOAM (OF) turbulence models used with Machine Learning predictions.
 
 **These are the models used in our papers:**
 
@@ -24,6 +24,9 @@ Information on how to cite both papers are available on their respective links.
 
 In the models of 1st paper, the corrections are driven by source-terms injected into the mean momentum equation, while the model of the 2nd paper injects the source term into a Reynolds stress model (RSM).
 
+## Compatibility
+
+The models were implemented using the OF *ShihQuadraticKE* model as a base.
 Implementation and tests were done in OpenFOAM-4.x, OpenFOAM-7 and OpenFOAM-2306.
 
 *The OpenFOAM foundation versions (openfoam.org) have renamed and moved header files used to compile this library from version 8 onwards. In these versions, compilation won't succeed, unless the code is adapted. For this reason I advise anyone interested in using this library to prefer the ESI versions (openfoam.com)*
@@ -32,18 +35,14 @@ Implementation and tests were done in OpenFOAM-4.x, OpenFOAM-7 and OpenFOAM-2306
 
 ### The folder `of-turbulence-models` contains the OpeFOAM implementation of the data-driven turbulence models.
 
-To compile and include the library in your OF installation do the following:
-1) Pull the repository, preferably into your $WM_PROJECT_USER_DIR
-2) Navigate to the repository's directory `of-turbulence-models`
-3) Use the command `wmake libso`
-4) It's necessary to include the line
-   `libs ("libMachineLearningTurbulenceModels.so");` into your simulation's controlDict in order to use the models
-5) Change the turbulence model in `constant/turbulenceProperties` into one of the 4 models of this library.
-
 ### The folder `of-applications` contains the applications that calculate the source-terms of each model
 
-To compile the applications, navigate to their directories and use the command `wmake`.
-A shell script that compiles all of them is provided.
+To compile and use the applications and the libraries, you need to do the following:
+1) Pull the repository, preferably into your $WM_PROJECT_USER_DIR
+2) Navigate to the repository's directory and execute the scripts `./Allwclean` and `./Allwmake` 
+4) After compilation, it is necessary to include the line
+   `libs ("libMachineLearningTurbulenceModels.so");` into your simulation's controlDict in order to use the turbulence models
+5) Change the turbulence model in `constant/turbulenceProperties` into one of the 5 models of this library.
 
 ### The folder `data` contains OpenFOAM simulations
 
@@ -93,8 +92,6 @@ The DNS fields for the periodic-hills were provided by Xiao et al. (2020)
   - The deviatoric part of the calculated ***R*** is injected into the momentum balance. 
   - The process is repeated iteratively until numerical convergence.
 
-Models were constructed using OF's *ShihQuadraticKE* turbulence model.
-
 Inside the `data` folder there is a shell script that will calculate and organize the source-terms in the simulations folders.
 
 
@@ -102,7 +99,7 @@ Inside the `data` folder there is a shell script that will calculate and organiz
 
 **Models**
 
-- Macedo, M. S. S., Cruz, M. A., Brener, B. P. and Thompson, R. L. "A data-driven turbulence modeling for the Reynolds stress tensor transport equation" *Accepted for publishing* (2024)
+- Macedo, M. S. S., Cruz, M. A., Brener, B. P. and Thompson, R. L. "A data-driven turbulence modeling for the Reynolds stress tensor transport equation" *International Journal for Numerical Methods in Fluids* (2024). https://doi.org/10.1002/fld.5284
 
 - Brener, B. P., Cruz, M. A., Macedo, M. S. S. and Thompson, R. L. "A highly accurate strategy for data-driven turbulence modeling." *Computational and Applied Mathematics*, 43, 59 (2024). https://doi.org/10.1007/s40314-023-02547-9
 

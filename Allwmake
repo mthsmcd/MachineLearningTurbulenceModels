@@ -1,0 +1,18 @@
+#!/bin/sh
+
+cd "${0%/*}" || exit
+
+app_directories="calculateNut calculateRFV calculateRFVperp calculateRperp calculateGamma"
+
+for dir in ${app_directories};
+do
+
+    echo "Compiling application $dir"
+    wmake ./of-applications/$dir
+    echo "Finished compiling $dir \n\n"
+
+done
+
+echo "Compiling turbulence models"
+wmake libso ./of-turbulence-models
+echo "Finished compiling turbulence models \n\n"
