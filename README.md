@@ -20,9 +20,9 @@ Fully available for free at https://onlinelibrary.wiley.com/share/author/JQGYVIF
 Information on how to cite both papers are available on their respective links.
 
 
-**The models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques or by the direct injection of high-fidelity fields (e.g. DNS, LES).**
+**The models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques. They can also be used by the direct injection of high-fidelity fields (e.g. DNS, LES).**
 
-In the models of 1st paper, the corrections are driven by source-terms injected into the mean momentum equation, while the model of the 2nd paper injects the source term into a Reynolds stress model (RSM).
+In the models of the 1st paper, the corrections are driven by source-terms injected into the mean momentum equation, while the model of the 2nd paper injects the source term into a Reynolds stress model (RSM).
 
 ## Compatibility
 
