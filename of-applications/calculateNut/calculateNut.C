@@ -5,7 +5,7 @@
     \\  /    A nd           | www.openfoam.com
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
-    Copyright (C) 2023 AUTHOR,AFFILIATION
+    Copyright (C) 2023 M. S. S. Macedo, Coppe/UFRJ
 -------------------------------------------------------------------------------
 License
     This file is part of OpenFOAM.
@@ -29,6 +29,20 @@ Application
 Description
     Calculates the eddy-viscosity using the mean strain-rate tensor S and the
     Reynolds stress tensor R.
+
+    You can find more details in:
+
+    Wu et al. (2018) - Physics-informed machine learning approach for augmenting 
+    turbulence models: A comprehensive framework.
+    DOI: 10.1103/PhysRevFluids.3.074602
+
+    Brener et al. (2021) - Conditioning and accurate solutions of Reynolds 
+    average Navier–Stokes equations with data-driven turbulence closures.
+    DOI: 10.1017/jfm.2021.148
+
+    Brener et al. (2024) - A highly accurate strategy for data-driven turbulence 
+    modeling. 
+    DOI: 10.1007/s40314-023-02547-9
 
 \*---------------------------------------------------------------------------*/
 

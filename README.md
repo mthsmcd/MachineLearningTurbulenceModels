@@ -22,12 +22,12 @@ Information on how to cite both papers are available on their respective links.
 
 **The models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques. They can also be used by the direct injection of high-fidelity fields (e.g. DNS, LES).**
 
-In the models of the 1st paper, the corrections are driven by source-terms injected into the mean momentum equation, while the model of the 2nd paper injects the source term into a Reynolds stress model (RSM).
+In the models of the 1st paper, the corrections are driven by source terms injected into the mean momentum equation, while the model of the 2nd paper injects the source term into a Reynolds stress model (RSM).
 
 ## Compatibility
 
 The models were implemented using the OF *ShihQuadraticKE* model as a base.
-Implementation and tests were done in OpenFOAM-4.x, OpenFOAM-7 and OpenFOAM-2306.
+Implementation and tests were done in OpenFOAM-4.x, OpenFOAM-7, OpenFOAM-v2306 and OpenFOAM-v2312.
 
 *The OpenFOAM foundation versions (openfoam.org) have renamed and moved header files used to compile this library from version 8 onwards. In these versions, compilation won't succeed, unless the code is adapted. For this reason I advise anyone interested in using this library to prefer the ESI versions (openfoam.com)*
 
@@ -35,7 +35,7 @@ Implementation and tests were done in OpenFOAM-4.x, OpenFOAM-7 and OpenFOAM-2306
 
 ### The folder `of-turbulence-models` contains the OpeFOAM implementation of the data-driven turbulence models.
 
-### The folder `of-applications` contains the applications that calculate the source-terms of each model
+### The folder `of-applications` contains the applications that calculate the source terms of each model
 
 To compile and use the applications and the libraries, you need to do the following:
 1) Pull the repository, preferably into your $WM_PROJECT_USER_DIR
@@ -63,36 +63,36 @@ And the following DNS fields:
 - *Udns* - velocity
 - *Rdns* - Reynolds stress
 
-The DNS fields for the square-duct were provided by Pinelli et al. (2010) and post-processed by Fonseca et al. (2022).
+The DNS fields for the square-duct were provided by [Pinelli et al. (2010)](#references) and post-processed by [Fonseca et al. (2022)](#references).
 
-The DNS fields for the periodic-hills were provided by Xiao et al. (2020)
+The DNS fields for the periodic-hills were provided by [Xiao et al. (2020)](#references)
 
 ## Models' in the repository and their source terms
 - **RST** - Reynolds stress tensor ***R***
   - Directly injects the deviatoric part of ***R*** into the momentum balance
 - **evRST** - Perpendicular-to S (mean strain-rate tensor) Reynolds Stress ***Rperp*** and optimal eddy-viscosity ***nut***
-  - Based on the paper by Wu et al. (2018), referenced at the end of this file.
-  - Directly injects the deviatoric part of ***Rperp*** into the momentum balance, along with the eddy-viscosity nut.
-  - The turbulent viscosity ***nut*** can be included in the diffusive term of the momentum equation implicitly, as proposed by Wu et al. (2018), or explicitly, as in Brener et al. (2021)
-  - Optionally, you can select between implicit or explicit variations, a constant ***implicitFactor*** can be defined as a model coefficient in the `turbulenceProperties` dictionary. If defined, the constant needs to be assigned a value of `0.0` (explicit) or `1.0` (implicit).
+  - Based on the paper by [Wu et al. (2018)](#references)
+  - Directly injects the deviatoric part of ***Rperp*** into the momentum balance, along with the eddy-viscosity nut
+  - The turbulent viscosity ***nut*** can be included in the diffusive term of the momentum equation implicitly, as proposed by [Wu et al. (2018)](#references), or explicitly, as in [Brener et al. (2021)](#references)
+  - You can select between implicit or explicit variations, a constant ***implicitFactor*** can be defined as a model coefficient in the `turbulenceProperties` dictionary. If defined, the constant needs to be assigned a value of `0.0` (explicit) or `1.0` (implicit).
   - If not defined, the model assigns the default value of `1.0` 
 - **RFV** - Modified Reynolds force vector ***t***
-  - Based on the work by Cruz et al. (2019), referenced at the end of this file.
+  - Based on the work by [Cruz et al. (2019)](#references)
   - Directly injects the vector ***t*** into the momentum balance
 - **evRFV** - nonlinear part of the modified Reynolds force vector ***tStar*** and an optimal eddy-viscosity ***nut***
-  - Based on the papers by Brener et al. (2021) and Brener et al (2022), referenced at the end of this file.
+  - Based on the papers by [Brener et al. (2021)](#references) and [Brener et al (2022)](#references)
   - Directly injects the vector ***tStar*** into the momentum balance along with the eddy-viscosity nut.
   - The scalar ***nut*** is included within the diffusive term of the discretized mean momentum balance solved to compute the velocity field U
   - Analogous to the `RST-EV` model, a constant ***implicitFactor*** defines if the diffusive term containing ***nut*** is calculated implicitly or explicitly.
   - Default value is also `1.0` (implicit)
 - **gammaRST** - Symmetric source term tensor ***Gamma***
-  - Based on the paper by Macedo et al. (2024), referenced at the end of this file.
+  - Based on the paper by [Macedo et al. (2024)](#references)
   - Injects the source term ***Gamma*** into the data-driven Reynolds stress model.
   - At each iteration, the RST equation is solved for ***R***.
   - The deviatoric part of the calculated ***R*** is injected into the momentum balance. 
   - The process is repeated iteratively until numerical convergence.
 
-Inside the `data` folder there is a shell script that will calculate and organize the source-terms in the simulations folders.
+Inside the `data` folder there is a shell script that will calculate and organize the source terms in the simulations folders.
 
 
 ## References

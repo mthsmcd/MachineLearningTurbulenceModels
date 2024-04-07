@@ -1,9 +1,11 @@
 /*---------------------------------------------------------------------------*\
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2018 OpenFOAM Foundation
+   \\    /   O peration     |
+    \\  /    A nd           | www.openfoam.com
      \\/     M anipulation  |
+-------------------------------------------------------------------------------
+    Copyright (C) 2023 M. S. S. Macedo, Coppe/UFRJ
 -------------------------------------------------------------------------------
 License
     This file is part of OpenFOAM.
@@ -35,13 +37,19 @@ Description
 
     Brener et al. (2021) - Conditioning and accurate solutions of Reynolds 
     average Navier–Stokes equations with data-driven turbulence closures.
-    DOI:10.1017/jfm.2021.148
+    DOI: 10.1017/jfm.2021.148
 
     Based on:
     
     Cruz, Matheus A., et al. (2019) - The use of the Reynolds force vector in a
-    physics informed machine learning approach for predictive turbulence modeling 
+    physics informed machine learning approach for predictive turbulence modeling.
     DOI: 10.1016/j.compfluid.2019.104258
+
+    You can find more details of its use in:
+
+    Brener et al. (2024) - A highly accurate strategy for data-driven turbulence 
+    modeling. 
+    DOI: 10.1007/s40314-023-02547-9
 
     To use the implicit method define implicitFactor = 1 in turbulenceProperties
     dictionary.

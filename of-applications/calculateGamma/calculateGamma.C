@@ -5,7 +5,7 @@
     \\  /    A nd           | www.openfoam.com
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
-    Copyright (C) 2024 AUTHOR,AFFILIATION
+    Copyright (C) 2023 M. S. S. Macedo, Coppe/UFRJ
 -------------------------------------------------------------------------------
 License
     This file is part of OpenFOAM.
@@ -27,6 +27,15 @@ Application
     calculateGamma
 
 Description
+    Calculates the symmetric tensor Gamma, which is the source term of the 
+    modified Reynolds stress tensor transport equation presented in 
+    Macedo et al (2024).
+
+    You can find more details in:
+
+    Macedo et al (2024) - A data-driven turbulence modeling for the Reynolds 
+    stress tensor transport equation (2024)
+    DOI: 10.1002/fld.5284
 
 \*---------------------------------------------------------------------------*/
 

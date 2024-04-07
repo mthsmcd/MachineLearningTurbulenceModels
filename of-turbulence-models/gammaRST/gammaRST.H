@@ -1,9 +1,11 @@
 /*---------------------------------------------------------------------------*\
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2018 OpenFOAM Foundation
+   \\    /   O peration     |
+    \\  /    A nd           | www.openfoam.com
      \\/     M anipulation  |
+-------------------------------------------------------------------------------
+    Copyright (C) 2023 M. S. S. Macedo, Coppe/UFRJ
 -------------------------------------------------------------------------------
 License
     This file is part of OpenFOAM.
@@ -38,8 +40,9 @@ Description
 
     Proposed in the paper:
 
-    Macedo, Matheus S. S., et al. (2024) - A data-driven turbulence modeling 
-    for the Reynolds stress tensor transport equation.
+    Macedo et al (2024) - A data-driven turbulence modeling for the Reynolds 
+    stress tensor transport equation (2024)
+    DOI: 10.1002/fld.5284
 
 SourceFiles
     gammaRST.C

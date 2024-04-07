@@ -5,7 +5,7 @@
     \\  /    A nd           | www.openfoam.com
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
-    Copyright (C) 2023 AUTHOR,AFFILIATION
+    Copyright (C) 2023 M. S. S. Macedo, Coppe/UFRJ
 -------------------------------------------------------------------------------
 License
     This file is part of OpenFOAM.
@@ -29,6 +29,12 @@ Application
 Description
     Calculates de modified Reynolds force vector by manipulating the mean momentum
     balance.
+
+    You can find more details in:
+
+    Cruz, Matheus A., et al. (2019) - The use of the Reynolds force vector in a
+    physics informed machine learning approach for predictive turbulence modeling.
+    DOI: 10.1016/j.compfluid.2019.104258
 
 \*---------------------------------------------------------------------------*/
 

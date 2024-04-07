@@ -5,7 +5,7 @@
     \\  /    A nd           | www.openfoam.com
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
-    Copyright (C) 2023 AUTHOR,AFFILIATION
+    Copyright (C) 2023 M. S. S. Macedo, Coppe/UFRJ
 -------------------------------------------------------------------------------
 License
     This file is part of OpenFOAM.
@@ -28,6 +28,16 @@ Application
 
 Description
     Calculates the nonlinear part of the Reynolds force vector tStar.
+
+    You can find more details in:
+
+    Brener et al. (2021) - Conditioning and accurate solutions of Reynolds 
+    average Navier–Stokes equations with data-driven turbulence closures.
+    DOI: 10.1017/jfm.2021.148
+
+    Brener et al. (2024) - A highly accurate strategy for data-driven turbulence 
+    modeling. 
+    DOI: 10.1007/s40314-023-02547-9
 
 \*---------------------------------------------------------------------------*/
 
