@@ -38,7 +38,7 @@ Implementation and tests were done in OpenFOAM-4.x, OpenFOAM-7, OpenFOAM-v2306 a
 ### The folder `of-applications` contains the applications that calculate the source terms of each model
 
 To compile and use the applications and the libraries, you need to do the following:
-1) Pull the repository, preferably into your $WM_PROJECT_USER_DIR
+1) Clone the repository, preferably into your $WM_PROJECT_USER_DIR
 2) Navigate to the repository's directory and execute the scripts `./Allwclean` and `./Allwmake` 
 4) After compilation, it is necessary to include the line
    `libs ("libMachineLearningTurbulenceModels.so");` into your simulation's controlDict in order to use the turbulence models
@@ -80,7 +80,7 @@ The DNS fields for the periodic-hills were provided by [Xiao et al. (2020)](#ref
   - Based on the work by [Cruz et al. (2019)](#references)
   - Directly injects the vector ***t*** into the momentum balance
 - **evRFV** - nonlinear part of the modified Reynolds force vector ***tStar*** and an optimal eddy-viscosity ***nut***
-  - Based on the papers by [Brener et al. (2021)](#references) and [Brener et al (2022)](#references)
+  - Based on the papers by [Brener et al. (2021)](#references) and [Brener et al (2024)](#references)
   - Directly injects the vector ***tStar*** into the momentum balance along with the eddy-viscosity nut.
   - The scalar ***nut*** is included within the diffusive term of the discretized mean momentum balance solved to compute the velocity field U
   - Analogous to the `RST-EV` model, a constant ***implicitFactor*** defines if the diffusive term containing ***nut*** is calculated implicitly or explicitly.
