@@ -21,6 +21,25 @@ Information on how to cite both papers are available on their respective links
 
 In the models of the 1st paper, the corrections are driven by source terms injected into the mean momentum equation, while the model of the 2nd paper injects its source term into a Reynolds stress model (RSM).
 
+
+## Table of Contents
+
+- [Compatibility](#compatibility)
+- [Folders in the repository](#folders-in-the-repository)
+  - [of-turbulence-models](#the-folder-of-applications-contains-the-applications-that-calculate-the-source-terms-of-each-model)
+  - [of-applications](#the-folder-of-applications-contains-the-applications-that-calculate-the-source-terms-of-each-model)
+  - [data](#the-folder-data-contains-openfoam-simulations)
+- [Models in the repository and their source terms](#models-in-the-repository-and-their-source-terms)
+- [Using the models](#using-the-models)
+  - [Tutorials: using the models with the provided DNS data](#tutorials-using-the-models-with-the-provided-dns-data)
+    - [Correcting the square-duct RANS case with Re = 3500 using the RST](#1---correcting-the-square-duct-rans-case-with-re--3500-using-the-rst)
+    - [Correcting the periodic-hill RANS case with alpha = 1.0 using the EV-RFV](#2---correcting-the-periodic-hill-rans-case-with-alpha--10-using-the-ev-rfv)
+    - [Correcting the square-duct RANS case with Re = 2200 using the Gamma-RST](#3---correcting-the-square-duct-rans-case-with-re--2200-using-the-gamma-rst)
+- [References](#references)
+  - [Models](#models)
+  - [Databases](#databases)
+
+
 ## Compatibility
 
 The models were implemented using the OF *ShihQuadraticKE* model as a base.
@@ -203,7 +222,7 @@ The model solves for `U`, `p` and `R` and requires the source terms `nut` (RANS)
 
 ## References
 
-**Models**
+### Models
 
 - Macedo, M. S. S., Cruz, M. A., Brener, B. P. and Thompson, R. L. "A data-driven turbulence modeling for the Reynolds stress tensor transport equation" *International Journal for Numerical Methods in Fluids* (2024). https://doi.org/10.1002/fld.5284
 
@@ -216,7 +235,7 @@ The model solves for `U`, `p` and `R` and requires the source terms `nut` (RANS)
 - Wu, J.L., Xiao, H., and Paterson, E. "Physics-informed machine learning approach for augmenting turbulence models: A comprehensive framework." *Physical Review Fluids*, 3.7 (2018): 074602. https://doi.org/10.1103/PhysRevFluids.3.074602
 
 
-**Databases**
+### Databases
 
 - Pinelli, A., Uhlmann, M., Sekimoto, A. and Kawahara, G. "Reynolds number dependence of mean flow structure in square duct turbulence." *Journal of Fluid Mechanics*, 644, 107-122 (2010). https://doi.org/10.1017/S0022112009992242
 
