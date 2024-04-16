@@ -1,28 +1,25 @@
 # MachineLearningTurbulenceModels
-OpenFOAM (OF) turbulence models used with Machine Learning predictions.
+OpenFOAM implementation of turbulence models driven by Machine Learning predictions.
 
-**These are the models used in our papers:**
+**These models were used in our papers:**
 
 1) ***"A highly accurate strategy for data-driven turbulence modeling"* by Bernardo P. Brener, Matheus A. Cruz, Matheus S. S. Macedo and Roney L. Thompson., published at *Computational and Applied Mathematics* in January 2024** 
 
-Available at https://doi.org/10.1007/s40314-023-02547-9
+    Available at https://doi.org/10.1007/s40314-023-02547-9 , you can read it for free [on this link](https://rdcu.be/dwtcd). 
 
-It is fully available for free at https://rdcu.be/dwtcd
+    (It was previously cited by other works in its *preprint* version, still accessible [here](http://dx.doi.org/10.2139/ssrn.4073177))
 
-(It was previously cited by other works in its *preprint* version, which is still accessible at http://dx.doi.org/10.2139/ssrn.4073177)
 
 2) ***"A data-driven turbulence modeling for the Reynolds stress tensor transport equation"* by Matheus S. S. Macedo, Matheus A. Cruz, Bernardo P. Brener and Roney L. Thompson, published at the *International Journal for Numerical Methods in Fluids* in March 2024**
 
-Available at https://doi.org/10.1002/fld.5284
-
-Fully available for free at https://onlinelibrary.wiley.com/share/author/JQGYVIFEU2NRDDMCZRJZ?target=10.1002/fld.5284
-
-Information on how to cite both papers are available on their respective links.
+    Available at https://doi.org/10.1002/fld.5284 , you can read it for free [on this link](https://onlinelibrary.wiley.com/share/author/JQGYVIFEU2NRDDMCZRJZ?target=10.1002/fld.5284)
 
 
-**The models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques. They can also be used by the direct injection of high-fidelity fields (e.g. DNS, LES).**
+Information on how to cite both papers are available on their respective links
 
-In the models of the 1st paper, the corrections are driven by source terms injected into the mean momentum equation, while the model of the 2nd paper injects the source term into a Reynolds stress model (RSM).
+**The models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques. They can also be used by the directly using high-fidelity fields (e.g. DNS, LES).**
+
+In the models of the 1st paper, the corrections are driven by source terms injected into the mean momentum equation, while the model of the 2nd paper injects its source term into a Reynolds stress model (RSM).
 
 ## Compatibility
 
@@ -93,6 +90,120 @@ The DNS fields for the periodic-hills were provided by [Xiao et al. (2020)](#ref
   - The process is repeated iteratively until numerical convergence.
 
 Inside the `data` folder there is a shell script that will calculate and organize the source terms in the simulations folders.
+
+## Using the models
+
+You can use the DNS fields contained in the `data` folder simulations to calculate the source terms of 
+each turbulence model and employ them as the target of your ML.
+The RANS data should be used to calculate the inputs of the ML technique you have selected.
+
+The feature selection of the RANS inputs is itself a topic of discussion and, therefore, varies from 
+work to work.
+For example, almost each of the [referenced works](#references) uses a different set of inputs.
+Because the focus of this repository is the OpenFOAM implementation of the turbulence models, we have
+decided to only include the baseline RANS fields from where we extracted the features used as 
+our inputs.
+
+There are multiple manners of training ML techniques and obtaining the source terms of each of the 
+5 models.
+In our works we have used neural networks and random forests, they were both built using
+common Python libraries such as: `Keras`, `TensorFlow` and `Scikit-learn`. 
+For more details on the implementation and training of the techniques 
+please check our papers and others in the [reference section](#references) of this README.
+
+If your main interest is building ML architectures and predicting the fields, you are referred to the 
+work of [McConkey et al (2021)](https://www.nature.com/articles/s41597-021-01034-2), where the authors
+have curated an extensive database readily usable in ML algorithms, especially in Python.
+The database is composed by DNS, LES and RANS data, and available at the
+Kaggle platform [on this link](https://www.kaggle.com/datasets/ryleymcconkey/ml-turbulence-dataset). 
+The data is presented both as OpenFOAM cases and as `Numpy` arrays, multiple derived RANS feature 
+fields usable as ML inputs are also available.
+
+### Tutorials: using the models with the provided DNS data
+
+You can also correct the RANS cases of this repository by running the models with the DNS fields 
+included here.
+This serves as an upper performance estimate for each of the 5 methodologies, since the best possible
+scenario for ML is to exactly predict its targets.
+
+Instructions for running three of these evaluations are provided below.
+**They must be followed after the models and applications of the repository have been compiled in your OpenFOAM installation!**
+
+The first two tutorials with the `RST` and `evRFV` models should converge quickly, the last tutorial, using the `gammaRST`
+model, takes longer since 6 additional PDEs for the Reynolds stress must be solved.
+
+(To simplify some of the steps in the tutorials you may run the provided 
+shell script in the `data` folder.)
+
+#### 1 - Correcting the square-duct RANS case with Re = 3500 using the RST
+
+The model solves for `U` and `p` and requires the source term `R`.
+
+0) Navigate to the case folder: `cd data/square-duct/3500/`
+1) Use the RANS velocity field `Urans` as the initial condition for `U`: `cp -r 0/Urans 0/U`
+2) Use the DNS Reynolds stress tensor `Rdns` as the model's source term: `cp -r 0/Rdns 0/R`
+3) Specify `RST` as the turbulence model in `constant/turbulenceProperties`: `foamDictionary constant/turbulenceProperties -entry RAS.RASModel -set RST`
+4) Include the repository's library in `system/cotrolDict`: `foamDictionary system/controlDict -entry libs -add "("'"libMachineLearningTurbulenceModels.so"'")"`
+
+    **You only have to do this if you are not using any of the `controlDict` included in `data` folder**
+
+5) Run the simulation: `simpleFoam` (you may use any other steady-state solver you prefer)
+
+
+#### 2 - Correcting the periodic-hill RANS case with alpha = 1.0 using the EV-RFV
+
+The model solves for `U` and `p` and requires the source terms `nut` (optimal) and `tStar`.
+
+0) Navigate to the case folder: `cd data/periodic-hills/1p0/`
+1) Calculate the DNS eddy-viscosity `nut` and nonlinear part of the Reynolds force vector `tStar`
+
+    1) Rename the baseline RANS eddy-viscosity to avoid overwriting it: `mv -v 0/nut 0/nutRans`
+    2) Set `Udns` and `Rdns` as `U` and `R`
+       1) `cp -r 0/Udns 0/U`
+       2) `cp -r 0/Rdns 0/R`
+    3) Calculate the DNS `nut`: `calculateNut`
+    4) Calculate the DNS `tStar`: `calculateRFVperp`
+    5) Reorganize the `0` folder: `rm -r 0/U 0/R`
+
+2) Use the RANS velocity field `Urans` as the initial condition for `U`: `cp -r 0/Urans 0/U`
+3) Specify `evRFV` as the turbulence model in `constant/turbulenceProperties`: `foamDictionary constant/turbulenceProperties -entry RAS.RASModel -set evRFV`
+4) Include the repository's library in `system/cotrolDict`: `foamDictionary system/controlDict -entry libs -add "("'"libMachineLearningTurbulenceModels.so"'")"`
+
+   **You only have to do this if you are not using any of the `controlDict` included in `data` folder**
+
+5) Run the simulation: `simpleFoam` (you may use any other steady-state solver you prefer)
+
+
+#### 3 - Correcting the square-duct RANS case with Re = 2200 using the Gamma-RST
+
+The model solves for `U`, `p` and `R` and requires the source terms `nut` (RANS) and `Gamma`.
+
+0) Navigate to the case folder: `cd data/square-duct/2200/`
+1) Calculate the DNS source term `Gamma`
+
+    1) Set `Udns` and `Rdns` as `U` and `R`
+        1) `cp -r 0/Udns 0/U`
+        2) `cp -r 0/Rdns 0/R`
+    3) Calculate the DNS `Gamma`: `calculateGamma`
+    4) Reorganize the `0` folder: `rm -r 0/U 0/R`
+
+2) Use the RANS velocity field `Urans` as the initial condition for `U`: `cp -r 0/Urans 0/U`
+3) Use the RANS Reynolds stress field `Rrans` as the initial condition for `R`: `cp -r 0/Rrans 0/R`
+4) Set the null boundary condition for `R`:
+   1) `foamDictionary 0/R -entry boundaryField.fixedWalls.type -set fixedValue`
+   2) `foamDictionary 0/R -entry boundaryField.fixedWalls.value -set "uniform (0 0 0 0 0 0)"`
+5) *Optional - convergence occurs faster when the initial condition for `R` is null:* `foamDictionary 0/R -entry internalField -set "uniform (0 0 0 0 0 0)"`
+6) Specify `gammaRST` as the turbulence model in `constant/turbulenceProperties`: `foamDictionary constant/turbulenceProperties -entry RAS.RASModel -set gammaRST`
+7) Include the discretization scheme for `div(phi,R)`: `foamDictionary system/fvSchemes -entry "divSchemes.div(phi,R)" -set "Gauss upwind"`
+8) Include the solver configuration for `R`: 
+   1) Solver specification: `sed -i 's/"(U|k|epsilon)"/"(U|k|epsilon|R)"/' system/fvSolution`
+   2) SIMPLE residual control: `foamDictionary system/fvSolution -entry SIMPLE.residualControl.R -set "1e-07"`
+   3) Relaxation factor: `foamDictionary system/fvSolution -entry relaxationFactors.equations.R -set "0.6"`
+9) Include the repository's library in `system/cotrolDict`: `foamDictionary system/controlDict -entry libs -add "("'"libMachineLearningTurbulenceModels.so"'")"`
+
+   **You only have to do this if you are not using any of the `controlDict` included in `data` folder**
+
+10) Run the simulation: `simpleFoam` (you may use any other steady-state solver you prefer)
 
 
 ## References
