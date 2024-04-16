@@ -194,16 +194,11 @@ The model solves for `U`, `p` and `R` and requires the source terms `nut` (RANS)
    2) `foamDictionary 0/R -entry boundaryField.fixedWalls.value -set "uniform (0 0 0 0 0 0)"`
 5) *Optional - convergence occurs faster when the initial condition for `R` is null:* `foamDictionary 0/R -entry internalField -set "uniform (0 0 0 0 0 0)"`
 6) Specify `gammaRST` as the turbulence model in `constant/turbulenceProperties`: `foamDictionary constant/turbulenceProperties -entry RAS.RASModel -set gammaRST`
-7) Include the discretization scheme for `div(phi,R)`: `foamDictionary system/fvSchemes -entry "divSchemes.div(phi,R)" -set "Gauss upwind"`
-8) Include the solver configuration for `R`: 
-   1) Solver specification: `sed -i 's/"(U|k|epsilon)"/"(U|k|epsilon|R)"/' system/fvSolution`
-   2) SIMPLE residual control: `foamDictionary system/fvSolution -entry SIMPLE.residualControl.R -set "1e-07"`
-   3) Relaxation factor: `foamDictionary system/fvSolution -entry relaxationFactors.equations.R -set "0.6"`
-9) Include the repository's library in `system/cotrolDict`: `foamDictionary system/controlDict -entry libs -add "("'"libMachineLearningTurbulenceModels.so"'")"`
+7) Include the repository's library in `system/cotrolDict`: `foamDictionary system/controlDict -entry libs -add "("'"libMachineLearningTurbulenceModels.so"'")"`
 
    **You only have to do this if you are not using any of the `controlDict` included in `data` folder**
 
-10) Run the simulation: `simpleFoam` (you may use any other steady-state solver you prefer)
+8) Run the simulation: `simpleFoam` (you may use any other steady-state solver you prefer)
 
 
 ## References

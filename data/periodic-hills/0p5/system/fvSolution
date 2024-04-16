@@ -34,7 +34,7 @@ solvers
         minIter         0;
         maxIter         800;
     }
-    "(U|k|epsilon)"
+    "(U|k|epsilon|R)"
     {
         solver          PBiCGStab;
         preconditioner  DILU;
@@ -58,7 +58,7 @@ solvers
         minIter         0;
         maxIter         800;
     }
-    "(U|k|epsilon)Final"
+    "(U|k|epsilon|R)Final"
     {
         solver          PBiCGStab;
         preconditioner  DILU;
@@ -76,7 +76,7 @@ SIMPLE
     residualControl
     {
         p               1e-07;
-        "(U|k|epsilon)" 1e-07;
+        "(U|k|epsilon|R)" 1e-07;
     }
 }
 
@@ -86,6 +86,7 @@ relaxationFactors
     {
         p               0.3;
         U               0.3;
+		R               0.3;
         "(k|epsilon)"   0.7;
     }
 }

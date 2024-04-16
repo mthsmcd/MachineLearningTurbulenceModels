@@ -24,7 +24,7 @@ solvers
         tolerance       1e-07;
         relTol          0.01;
     }
-    "(U|k|epsilon)"
+    "(U|k|epsilon|R)"
     {
         solver          smoothSolver;
         smoother        symGaussSeidel;
@@ -43,6 +43,7 @@ SIMPLE
     {
         p               1e-07;
         U               1e-07;
+		R               1e-07;
         "(k|epsilon)"   1e-07;
     }
 }
@@ -56,6 +57,7 @@ relaxationFactors
     equations
     {
         U               0.6;
+		R               0.6;
         "(k|epsilon)"   0.6;
     }
 }
