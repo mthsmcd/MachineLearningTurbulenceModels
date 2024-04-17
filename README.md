@@ -17,8 +17,8 @@ OpenFOAM implementation of turbulence models driven by Machine Learning predicti
 
 Information on how to cite both papers are available on their respective links
 
-**The models are used to correct RANS simulations by using quantities predicted by Machine Learning techniques. They can also be used by the directly using high-fidelity fields (e.g. DNS, LES).**
-
+The models are used to correct RANS simulations by using fields predicted by Machine Learning techniques. 
+They also work with the direct use of high-fidelity fields, such as DNS or LES.
 In the models of the 1st paper, the corrections are driven by source terms injected into the mean momentum equation, while the model of the 2nd paper injects its source term into a Reynolds stress model (RSM).
 
 
@@ -33,7 +33,7 @@ In the models of the 1st paper, the corrections are driven by source terms injec
 - [Using the models](#using-the-models)
   - [Tutorials: using the models with the provided DNS data](#tutorials-using-the-models-with-the-provided-dns-data)
     - [Correcting the square-duct RANS case with Re = 3500 using the RST](#1---correcting-the-square-duct-rans-case-with-re--3500-using-the-rst)
-    - [Correcting the periodic-hill RANS case with alpha = 1.0 using the EV-RFV](#2---correcting-the-periodic-hill-rans-case-with-alpha--10-using-the-ev-rfv)
+    - [Correcting the periodic-hills RANS case with alpha = 1.0 using the EV-RFV](#2---correcting-the-periodic-hill-rans-case-with-alpha--10-using-the-ev-rfv)
     - [Correcting the square-duct RANS case with Re = 2200 using the Gamma-RST](#3---correcting-the-square-duct-rans-case-with-re--2200-using-the-gamma-rst)
 - [References](#references)
   - [Models](#models)
@@ -62,7 +62,7 @@ To compile and use the applications and the libraries, you need to do the follow
 
 ### The folder `data` contains OpenFOAM simulations
 
-The square-duct (SD) and periodic-hills (PH) simulations used in our paper are provided. 
+The square-duct (SD) and periodic-hills (PH) simulations used in our papers are provided. 
 
 The SD folder contains the simulations for Reynolds numbers of 2200, 2400, 2600, 2900, 3200, 3500.
 The PH folder contains the simulations for the slopes of 0.5, 0.8, 1.0, 1.2, 1.5.
@@ -99,7 +99,7 @@ The DNS fields for the periodic-hills were provided by [Xiao et al. (2020)](#ref
   - Based on the papers by [Brener et al. (2021)](#references) and [Brener et al (2024)](#references)
   - Directly injects the vector ***tStar*** into the momentum balance along with the eddy-viscosity nut.
   - The scalar ***nut*** is included within the diffusive term of the discretized mean momentum balance solved to compute the velocity field U
-  - Analogous to the `RST-EV` model, a constant ***implicitFactor*** defines if the diffusive term containing ***nut*** is calculated implicitly or explicitly.
+  - Analogous to the `evRST` model, a constant ***implicitFactor*** defines if the diffusive term containing ***nut*** is calculated implicitly or explicitly.
   - Default value is also `1.0` (implicit)
 - **gammaRST** - Symmetric source term tensor ***Gamma***
   - Based on the paper by [Macedo et al. (2024)](#references)
@@ -108,7 +108,7 @@ The DNS fields for the periodic-hills were provided by [Xiao et al. (2020)](#ref
   - The deviatoric part of the calculated ***R*** is injected into the momentum balance. 
   - The process is repeated iteratively until numerical convergence.
 
-Inside the `data` folder there is a shell script that will calculate and organize the source terms in the simulations folders.
+Inside the `data` folder there is a shell script that will calculate and organize the source terms in each simulation.
 
 ## Using the models
 
@@ -123,7 +123,7 @@ Because the focus of this repository is the OpenFOAM implementation of the turbu
 decided to only include the baseline RANS fields from where we extracted the features used as 
 our inputs.
 
-There are multiple manners of training ML techniques and obtaining the source terms of each of the 
+There are multiple manners of training ML techniques and predicting the source terms of each of the 
 5 models.
 In our works we have used neural networks and random forests, they were both built using
 common Python libraries such as: `Keras`, `TensorFlow` and `Scikit-learn`. 
@@ -164,7 +164,7 @@ The model solves for `U` and `p` and requires the source term `R`.
 3) Specify `RST` as the turbulence model in `constant/turbulenceProperties`: `foamDictionary constant/turbulenceProperties -entry RAS.RASModel -set RST`
 4) Include the repository's library in `system/cotrolDict`: `foamDictionary system/controlDict -entry libs -add "("'"libMachineLearningTurbulenceModels.so"'")"`
 
-    **You only have to do this if you are not using any of the `controlDict` included in `data` folder**
+    **You only have to do this if you are not using any of the `controlDict` included in the `data` folder**
 
 5) Run the simulation: `simpleFoam` (you may use any other steady-state solver you prefer)
 
@@ -188,7 +188,7 @@ The model solves for `U` and `p` and requires the source terms `nut` (optimal) a
 3) Specify `evRFV` as the turbulence model in `constant/turbulenceProperties`: `foamDictionary constant/turbulenceProperties -entry RAS.RASModel -set evRFV`
 4) Include the repository's library in `system/cotrolDict`: `foamDictionary system/controlDict -entry libs -add "("'"libMachineLearningTurbulenceModels.so"'")"`
 
-   **You only have to do this if you are not using any of the `controlDict` included in `data` folder**
+   **You only have to do this if you are not using any of the `controlDict` included in the `data` folder**
 
 5) Run the simulation: `simpleFoam` (you may use any other steady-state solver you prefer)
 
@@ -215,7 +215,7 @@ The model solves for `U`, `p` and `R` and requires the source terms `nut` (RANS)
 6) Specify `gammaRST` as the turbulence model in `constant/turbulenceProperties`: `foamDictionary constant/turbulenceProperties -entry RAS.RASModel -set gammaRST`
 7) Include the repository's library in `system/cotrolDict`: `foamDictionary system/controlDict -entry libs -add "("'"libMachineLearningTurbulenceModels.so"'")"`
 
-   **You only have to do this if you are not using any of the `controlDict` included in `data` folder**
+   **You only have to do this if you are not using any of the `controlDict` included in the `data` folder**
 
 8) Run the simulation: `simpleFoam` (you may use any other steady-state solver you prefer)
 
