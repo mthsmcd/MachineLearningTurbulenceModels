@@ -154,7 +154,7 @@ model, takes longer since 6 additional PDEs for the Reynolds stress must be solv
 (To simplify some of the steps in the tutorials you may run the provided 
 shell script in the `data` folder.)
 
-#### 1 - Correcting the square-duct RANS case with Re = 3500 using the RST
+#### 1 - Correcting the square-duct RANS case with Re = 3500 using the RST model
 
 The model solves for `U` and `p` and requires the source term `R`.
 
@@ -169,7 +169,7 @@ The model solves for `U` and `p` and requires the source term `R`.
 5) Run the simulation: `simpleFoam` (you may use any other steady-state solver you prefer)
 
 
-#### 2 - Correcting the periodic-hill RANS case with alpha = 1.0 using the EV-RFV
+#### 2 - Correcting the periodic-hill RANS case with alpha = 1.0 using the evRFV model
 
 The model solves for `U` and `p` and requires the source terms `nut` (optimal) and `tStar`.
 
@@ -193,7 +193,7 @@ The model solves for `U` and `p` and requires the source terms `nut` (optimal) a
 5) Run the simulation: `simpleFoam` (you may use any other steady-state solver you prefer)
 
 
-#### 3 - Correcting the square-duct RANS case with Re = 2200 using the Gamma-RST
+#### 3 - Correcting the square-duct RANS case with Re = 2200 using the gammaRST model
 
 The model solves for `U`, `p` and `R` and requires the source terms `nut` (RANS) and `Gamma`.
 
